@@ -1,7 +1,3 @@
-export interface HasId {
-  id: string;
-}
-
 export interface Contact {
   id: string;
   name: string;

@@ -1,5 +1,5 @@
 import { contactList } from "../data/contacts";
-import { getById } from "../utils/helpers";
+import { getById, getIndexById } from "../utils/helpers";
 import { Contact, CreateContact, UpdateContact } from "../types/contact";
 
 export function addContact(newContact: CreateContact): Contact {
@@ -14,37 +14,28 @@ export function addContact(newContact: CreateContact): Contact {
 }
 
 export function updateContact(id: string, contact: UpdateContact): Contact {
-  const foundContact: Contact | undefined = contactList.find(
-    (item) => item.id === id,
-  );
-  if (!foundContact) {
-    throw new Error("Contact not found");
-  }
+  const foundContact = getById(contactList, id);
   const updatedContact = { ...foundContact, ...contact };
 
-  const index = contactList.findIndex((item) => item.id === id);
+  const index = getIndexById(contactList, id);
   contactList[index] = updatedContact;
 
   return updatedContact;
 }
 
 export function deleteContact(id: string): Contact {
-  const index = contactList.findIndex((item) => item.id === id);
-  if (index === -1) {
-    throw new Error("Contact not found in the list");
-  }
-  const foundContact = contactList[index];
+  const foundContact = getById(contactList, id);
+
+  const index = getIndexById(contactList, id);
 
   contactList.splice(index, 1);
   return foundContact;
 }
 
 export function getContactById(id: string): Contact {
-  const index = contactList.findIndex((item) => item.id === id);
-  if (index === -1) {
-    throw new Error("Contact not found in the list");
-  }
-  const foundContact = contactList[index];
+  return getById(contactList, id);
+}
 
-  return foundContact;
+export function getAllContacts(): Contact[] {
+  return contactList;
 }
