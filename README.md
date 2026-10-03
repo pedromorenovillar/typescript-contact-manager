@@ -1,6 +1,9 @@
 # Contact manager
 
-Mi siguiente paso sería redactar una sección "What I learned" donde expliques brevemente:
+Small contact managing application created to practice TypeScript.
+
+## What I learned
+
 Omit
 Partial
 Generics (getById)
