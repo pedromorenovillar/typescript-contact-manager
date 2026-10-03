@@ -7,7 +7,6 @@ export function getById<Type extends HasId>(arg: Type[], id: string): Type {
   if (!foundItem) {
     throw new Error("Item not found in the list");
   }
-  // narrowing: here TS knows that foundItem cannot be undefined
   return foundItem;
 }
 

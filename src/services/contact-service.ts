@@ -1,6 +1,10 @@
-import { contactList } from "../data/contacts";
-import { getById, getIndexById } from "../utils/helpers";
-import { Contact, CreateContact, UpdateContact } from "../types/contact";
+import { contactList } from "../data/contacts.js";
+import { getById, getIndexById } from "../utils/helpers.js";
+import type {
+  Contact,
+  CreateContact,
+  UpdateContact,
+} from "../types/contact.js";
 
 export function addContact(newContact: CreateContact): Contact {
   const id = Math.random().toString(36).substring(2, 15);
